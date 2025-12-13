@@ -108,10 +108,7 @@ if __name__ == "__main__":
 
     print("=== Інформація про згенерований граф ===")
     print(f"Кількість вершин: {graph.n}")
-    print(f"Фактична щільність: {graph.get_density():.2%}")
     print(f"Кількість ребер: {graph.edge_count}")
-
-    print()
 
     # Ініціалізуємо клас Algorithm з нашим графом
     tsp_solver = Algorithm(graph)
