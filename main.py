@@ -1,4 +1,35 @@
+from graph import Graph
 from generate import GraphGenerator
 
-g = GraphGenerator.generate(n=50, density=0.7)
-print(g)  # Граф з 50 вершинами, 857 ребрами, щільність: 70.00%
+# Параметри графу
+n = 10
+density = 0.7
+
+# Створення графу через генератор
+graph = GraphGenerator.generate(n=n, density=density, min_weight=10, max_weight=100)
+
+# Виведення інформації про граф
+print("=== Інформація про граф ===")
+print(f"Кількість вершин: {graph.n}")
+print(f"Заявлена щільність: {graph.density}")
+print(f"Фактична щільність: {graph.get_density():.2%}")
+print(f"Кількість ребер: {graph.edge_count}")
+print(f"Зв'язний: {graph.is_connected()}")
+print()
+
+# Отримання ступеня певної вершини
+vertex = 0
+degree = graph.degree(vertex)
+print(f"Ступінь вершини {vertex}: {degree}")
+print()
+
+# Виведення сусідів вершини
+print(f"Сусіди вершини {vertex}:")
+for neighbor, weight in graph.get_neighbors(vertex):
+    print(f"  -> вершина {neighbor}, вага ребра: {weight:.2f}")
+print()
+
+# Виведення ступенів всіх вершин
+print("Ступені всіх вершин:")
+for v in range(graph.n):
+    print(f"  Вершина {v}: ступінь = {graph.degree(v)}")
