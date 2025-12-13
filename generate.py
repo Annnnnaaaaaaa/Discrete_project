@@ -56,6 +56,10 @@ class GraphGenerator:
         """
         n = graph.n
 
+        # Граф повинен бути зв'язним
+        if not graph.is_connected():
+            return False
+
         # Перевірка умови Дірака: deg(v) >= n/2 для всіх вершин
         for v in range(n):
             if graph.degree(v) < n / 2:

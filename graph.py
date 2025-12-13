@@ -52,6 +52,31 @@ class Graph:
         max_edges = self.n * (self.n - 1) // 2
         return self.edge_count / max_edges if max_edges > 0 else 0
 
+    def is_connected(self):
+        """
+        Перевіряє, чи є граф зв'язним за допомогою BFS.
+
+        Returns:
+            bool: True якщо граф зв'язний, False інакше
+        """
+        if self.n == 0:
+            return True
+
+        visited = [False] * self.n
+        queue = [0]
+        visited[0] = True
+        count = 1
+
+        while queue:
+            v = queue.pop(0)
+            for neighbor, _ in self.adj_list[v]:
+                if not visited[neighbor]:
+                    visited[neighbor] = True
+                    queue.append(neighbor)
+                    count += 1
+
+        return count == self.n
+
     def __str__(self):
         """Текстове представлення графу."""
         return (f"Граф з {self.n} вершинами, {self.edge_count} ребрами, "
