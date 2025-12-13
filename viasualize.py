@@ -1,2 +1,2 @@
 # лалалала комент
-print("fgbfgb")
+print("fgbfgb")dtyjtyjf
