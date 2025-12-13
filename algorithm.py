@@ -25,3 +25,4 @@ class Algorithm:
 sm_g = GraphGenerator.generate(10, 0.9, min_weight=10, max_weight=100)
 a = Algorithm(sm_g)
 a.is_hamilton()
+#gggg
