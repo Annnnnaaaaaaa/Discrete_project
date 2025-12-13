@@ -1,4 +1,5 @@
 import random
+from graph import Graph
 
 
 class GraphGenerator:
