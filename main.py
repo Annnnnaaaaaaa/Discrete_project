@@ -1,54 +1,10 @@
-# from graph import Graph
-# from generate import GraphGenerator
-# from algorithm import Algorithm
-# from visualize import Visualizer
-#
-# # Створюємо об'єкт графу з параметрами
-# graph = Graph(n=8, d=0.7)
-#
-# # Генеруємо ребра для цього графу
-# GraphGenerator.generate(graph, min_weight=10, max_weight=100)
-#
-# # Виведення інформації про граф
-# print("=== Інформація про граф ===")
-# print(f"Кількість вершин: {graph.n}")
-# print(f"Заявлена щільність: {graph.density}")
-# print(f"Кількість ребер: {graph.edge_count}")
-# print(f"Зв'язний: {graph.is_connected()}")
-# print()
-#
-# # Створюємо візуалізатор
-# visualizer = Visualizer(graph)
-#
-# # Показуємо початковий граф
-# print("Показ початкового графу...")
-# visualizer.visualize_graph(title="Початковий граф")
-#
-# # Розв'язуємо TSP
-# print("\n=== Розв'язання TSP ===")
-# tsp_solver = Algorithm(graph)
-# route, distance = tsp_solver.find_tsp_nearest_neighbor(start_city=0)
-#
-# if route:
-#     print(f"Знайдений маршрут: {' → '.join(map(str, route))}")
-#     print(f"Загальна довжина: {distance:.2f}")
-#
-#     # Показуємо розв'язок
-#     print("\nПоказ розв'язку TSP...")
-#     visualizer.visualize_tsp_solution(route, distance, title="Розв'язок TSP")
-#
-#     # Показуємо порівняння (опціонально)
-#     print("\nПоказ порівняння...")
-#     visualizer.visualize_comparison(route, distance)
-
 from graph import Graph
 from generate import GraphGenerator
 from algorithm import Algorithm
-# from visualize import Visualizer # Закоментовано, бо файл Visualizer не надано
+from visualize import Visualizer
 
 # Створюємо об'єкт графу з параметрами
-# Збільшимо щільність, щоб гарантувати зв'язність
-graph = Graph(n=8, d=0.8)
+graph = Graph(n=8, d=0.7)
 
 # Генеруємо ребра для цього графу
 GraphGenerator.generate(graph, min_weight=10, max_weight=100)
@@ -61,25 +17,26 @@ print(f"Кількість ребер: {graph.edge_count}")
 print(f"Зв'язний: {graph.is_connected()}")
 print()
 
-# Якщо у вас є visualize.py, розкоментуйте цей блок
-# print("Показ початкового графу...")
-# visualizer = Visualizer(graph)
-# visualizer.visualize_graph(title="Початковий граф")
+# Створюємо візуалізатор
+visualizer = Visualizer(graph)
+
+# Показуємо початковий граф
+print("Показ початкового графу...")
+visualizer.visualize_graph(title="Початковий граф")
 
 # Розв'язуємо TSP
 print("\n=== Розв'язання TSP ===")
 tsp_solver = Algorithm(graph)
-# Викликаємо find_tsp_nearest_neighbor напряму, як було в оригіналі main.py
 route, distance = tsp_solver.find_tsp_nearest_neighbor(start_city=0)
 
-if route and distance != Algorithm.INF:
+if route:
     print(f"Знайдений маршрут: {' → '.join(map(str, route))}")
     print(f"Загальна довжина: {distance:.2f}")
 
-    # Якщо у вас є visualize.py, розкоментуйте цей блок
-    # print("\nПоказ розв'язку TSP...")
-    # visualizer.visualize_tsp_solution(route, distance, title="Розв'язок TSP")
-    # print("\nПоказ порівняння...")
-    # visualizer.visualize_comparison(route, distance)
-else:
-    print("Не вдалося знайти маршрут TSP (можливо, граф не зв'язний).")
+    # Показуємо розв'язок
+    print("\nПоказ розв'язку TSP...")
+    visualizer.visualize_tsp_solution(route, distance, title="Розв'язок TSP")
+
+    # Показуємо порівняння (опціонально)
+    print("\nПоказ порівняння...")
+    visualizer.visualize_comparison(route, distance)
