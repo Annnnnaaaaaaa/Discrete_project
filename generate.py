@@ -1,25 +1,24 @@
 import random
-from graph import Graph
 
 
 class GraphGenerator:
     """Генератор простих неорієнтованих зважених графів."""
 
     @staticmethod
-    def generate(n, density, min_weight=1, max_weight=100):
+    def generate(graph, min_weight=1, max_weight=100):
         """
-        Генерує простий неорієнтований зважений граф заданої щільності.
+        Наповнює граф ребрами відповідно до його щільності.
 
         Args:
-            n (int): кількість вершин
-            density (float): щільність графу (0 < density <= 1)
+            graph (Graph): об'єкт графу з вже встановленими n та density
             min_weight (float): мінімальна вага ребра
             max_weight (float): максимальна вага ребра
 
         Returns:
-            Graph: згенерований граф
+            Graph: той самий граф, але з доданими ребрами
         """
-        graph = Graph(n, density)  # ← ВИПРАВЛЕНО: передаємо density
+        n = graph.n
+        density = graph.density
 
         max_edges = n * (n - 1) // 2
         target_edges = int(max_edges * density)

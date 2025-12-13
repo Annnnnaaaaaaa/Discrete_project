@@ -1,12 +1,11 @@
 from graph import Graph
 from generate import GraphGenerator
 
-# Параметри графу
-n = 10
-density = 0.7
+# Створюємо об'єкт графу з параметрами
+graph = Graph(n=10, d=0.7)
 
-# Створення графу через генератор
-graph = GraphGenerator.generate(n=n, density=density, min_weight=10, max_weight=100)
+# Генеруємо ребра для цього графу
+GraphGenerator.generate(graph, min_weight=10, max_weight=100)
 
 # Виведення інформації про граф
 print("=== Інформація про граф ===")
@@ -32,6 +31,3 @@ print()
 print("Ступені всіх вершин:")
 for v in range(graph.n):
     print(f"  Вершина {v}: ступінь = {graph.degree(v)}")
-
-
-# няняняня
