@@ -11,7 +11,6 @@ GraphGenerator.generate(graph, min_weight=10, max_weight=100)
 print("=== Інформація про граф ===")
 print(f"Кількість вершин: {graph.n}")
 print(f"Заявлена щільність: {graph.density}")
-print(f"Фактична щільність: {graph.get_density():.2%}")
 print(f"Кількість ребер: {graph.edge_count}")
 print()
 

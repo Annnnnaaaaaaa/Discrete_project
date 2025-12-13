@@ -47,11 +47,6 @@ class Graph:
         """Повертає ступінь вершини v."""
         return len(self.adj_list[v])
 
-    def get_density(self):
-        """Обчислює фактичну щільність графу."""
-        max_edges = self.n * (self.n - 1) // 2
-        return self.edge_count / max_edges if max_edges > 0 else 0
-
     def is_connected(self):
         """
         Перевіряє, чи є граф зв'язним за допомогою BFS.
