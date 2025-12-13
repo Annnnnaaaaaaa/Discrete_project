@@ -32,5 +32,3 @@ print()
 print("Ступені всіх вершин:")
 for v in range(graph.n):
     print(f"  Вершина {v}: ступінь = {graph.degree(v)}")
-
-# нянянянняя
