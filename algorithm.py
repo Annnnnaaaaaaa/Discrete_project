@@ -1,6 +1,5 @@
 from graph import Graph
 from generate import GraphGenerator
-from math import inf
 import sys
 
 # Використовуємо велике число для представлення "нескінченності" (відсутність прямого ребра)
