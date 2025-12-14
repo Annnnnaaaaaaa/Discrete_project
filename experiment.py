@@ -43,8 +43,7 @@ class TSPExperiment:
             graphs = []
             print(f"  Генерація {self.experiments_per_size} графів...", end=" ")
             for _ in range(self.experiments_per_size):
-                graph = generate_complete_graph(size, graph_class,
-                                                self.min_weight, self.max_weight)
+                graph = generate_complete_graph(size, graph_class, self.min_weight, self.max_weight)
                 graphs.append(graph)
             print("✓")
 
