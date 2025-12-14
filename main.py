@@ -19,4 +19,4 @@ print(f"Час виконання: {exec_time:.6f} секунд")
 
 # Візуалізація
 print("\nВізуалізація...")
-visualize(graph, route)
+visualize(graph, route, distance)

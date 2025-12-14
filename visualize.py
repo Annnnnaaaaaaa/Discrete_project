@@ -2,7 +2,7 @@ import matplotlib.pyplot as plt
 import networkx as nx
 
 
-def visualize(graph, route):
+def visualize(graph, route, distance):
     """Візуалізує граф та знайдений маршрут TSP."""
     G = nx.Graph()
     for i in range(graph.n):
@@ -64,5 +64,10 @@ def visualize(graph, route):
                   fontsize=14, fontweight='bold')
     ax2.axis('off')
 
+    # Додаємо текст з послідовністю внизу
+    route_text = f"Послідовність вершин: {' → '.join(map(str, route))}     Довжина шляху: {distance:.2f}"
+    fig.text(0.5, 0.02, route_text, ha='center', fontsize=11)
+
     plt.tight_layout()
+    plt.subplots_adjust(bottom=0.06)
     plt.show()
