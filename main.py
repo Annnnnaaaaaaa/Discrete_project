@@ -1,6 +1,5 @@
 from generate import generate_complete_graph
 from graph_matrix import GraphAdjMatrix
-from graph_list import GraphAdjList
 from algorithm import solve_tsp
 from visualize import visualize
 from experiment import TSPExperiment
@@ -37,12 +36,3 @@ experiment = TSPExperiment(
 
 # Проводимо експерименти для обох представлень
 experiment.run_all_experiments()
-
-# Виводимо порівняльну таблицю
-experiment.print_comparison()
-
-# Аналізуємо складність
-experiment.analyze_complexity()
-
-# Візуалізуємо результати
-experiment.visualize_comparison()
