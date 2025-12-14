@@ -2,7 +2,7 @@ import time
 
 
 def tsp_greedy(graph, start):
-    """Жадібний алгоритм TSP з заданої вершини."""
+    """Жадібний алгоритм TSP."""
     n = graph.n
     visited = [False] * n
     route = [start]
@@ -26,7 +26,6 @@ def tsp_greedy(graph, start):
         total_distance += min_dist
         current = nearest
 
-    # Замикаємо цикл
     total_distance += graph.get_weight(current, start)
     route.append(start)
 
@@ -46,5 +45,4 @@ def solve_tsp(graph):
             best_route = route
 
     execution_time = time.time() - start_time
-
     return best_route, best_distance, execution_time
