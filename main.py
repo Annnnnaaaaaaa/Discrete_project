@@ -25,6 +25,7 @@ visualize(graph, route, distance)
 
 
 # Створюємо та запускаємо експеримент
+# Щоб експеримент почався, треба закрити вікно з візуалізацією!!!
 experiment = TSPExperiment(
     min_nodes=20,
     max_nodes=200,
@@ -34,5 +35,5 @@ experiment = TSPExperiment(
     max_weight=100
 )
 
-# Проводимо експерименти для обох представлень
 experiment.run_all_experiments()
+experiment.visualize_comparison()

@@ -102,3 +102,39 @@ class TSPExperiment:
         print("\n" + "=" * 60)
         print("  ЕКСПЕРИМЕНТИ ЗАВЕРШЕНО")
         print("=" * 60 + "\n")
+
+
+    def visualize_comparison(self):
+        """Візуалізує порівняння двох представлень."""
+        sizes = self.graph_sizes
+
+        fig, ax = plt.subplots(1, 1, figsize=(14, 8))
+
+        # Розподіл часу для матриці суміжності
+        for size in sizes:
+            times = self.results_matrix[size]['execution_times']
+            positions = [size - 1] * len(times)
+            ax.scatter(positions, times, alpha=0.4, s=40, color='blue', label='Матриця' if size == sizes[0] else '')
+
+        # Розподіл часу для списків суміжності
+        for size in sizes:
+            times = self.results_list[size]['execution_times']
+            positions = [size + 1] * len(times)
+            ax.scatter(positions, times, alpha=0.4, s=40, color='red', label='Списки' if size == sizes[0] else '')
+
+        # Середні значення
+        avg_matrix = [self.results_matrix[size]['avg_time'] for size in sizes]
+        avg_list = [self.results_list[size]['avg_time'] for size in sizes]
+
+        ax.plot(sizes, avg_matrix, 'b-', linewidth=2.5, marker='o', markersize=8, label='Середнє (Матриця)')
+        ax.plot(sizes, avg_list, 'r-', linewidth=2.5, marker='s', markersize=8, label='Середнє (Списки)')
+
+        ax.set_xlabel('Кількість вершин', fontsize=13, fontweight='bold')
+        ax.set_ylabel('Час виконання (секунди)', fontsize=13, fontweight='bold')
+        ax.set_title('Порівняння часу виконання TSP для різних представлень графу',
+                     fontsize=15, fontweight='bold', pad=20)
+        ax.grid(True, alpha=0.3, linestyle='--')
+        ax.legend(fontsize=11, loc='upper left')
+
+        plt.tight_layout()
+        plt.show()
